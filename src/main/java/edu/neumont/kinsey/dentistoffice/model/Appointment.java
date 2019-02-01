@@ -16,6 +16,4 @@ public class Appointment {
 	public void setDateTime(LocalDateTime dateTime) {
 		this.dateTime = dateTime;
 	}
-	
-	
 }
