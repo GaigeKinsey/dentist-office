@@ -1,16 +1,25 @@
 package edu.neumont.kinsey.dentistoffice.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Clinic {
+public class Clinic implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private List<Provider> providers = new ArrayList<>();
 	private List<Payment> payments = new ArrayList<>();
 	private List<Patient> patients = new ArrayList<>();
 	private List<Appointment> appointments = new ArrayList<>();
+	private List<User> users = new ArrayList<>();
 	
-	public Clinic() {}
+	public Clinic () {
+		users.add(new User("Administrator", "1234Password"));
+	}
 	
 	public List<Provider> getProviders() {
 		return providers;
@@ -42,6 +51,14 @@ public class Clinic {
 
 	public void setAppointments(List<Appointment> appointments) {
 		this.appointments = appointments;
+	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 	public List<Appointment> getFutureAppointments(){
