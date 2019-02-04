@@ -33,4 +33,19 @@ public class UserInteraction implements UserInteractionInterface{
 		
 		return 0;
 	}
+
+	@Override
+	public String getUsername() {
+		return ConsoleIO.promptForInput("Please enter in a username.", false);
+	}
+
+	@Override
+	public String getPassword() {
+		return ConsoleIO.promptForInput("Please enter in a password.", false);
+	}
+
+	@Override
+	public void invalidUser() {
+		ConsoleIO.displayMessage("Invalid username or password.");
+	}
 }
