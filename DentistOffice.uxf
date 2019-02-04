@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <help_text/>
+  <zoom_level>5</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>280</y>
+      <w>195</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>AdministrativeUser
+--
+--
++AdministrativeUser(String username, String password): ctor
++changePassword(User user): void
++addUser(User user): void
++removeUser(User user): void
++changeRole(User user, UserRole role): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>175</x>
+      <y>140</y>
+      <w>175</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Appointment
+--
+-dateTime: LocalDateTime
+--
++Appointment(LocalDateTime dateTime): ctor
++getDateTime(): LocalDateTime
++setDateTime(LocalDateTime dateTime): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>355</y>
+      <w>290</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>AppointmentRecord
+--
+-procedures = new ArrayList(): List&lt;ProcedureRecord&gt;
+--
++AppointmentRecord(LocalDateTime dateTime, List&lt;ProcedureRecord&gt; procedures): ctor
++getProcedures(): List&lt;ProcedureRecord&gt;
++setProcedures(List&lt;ProcedureRecord&gt; procedures): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>425</y>
+      <w>270</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>Clinic
+--
+-serialVersionUID = 1L: long
+-providers = new ArrayList(): List&lt;Provider&gt;
+-payments = new ArrayList(): List&lt;Payment&gt;
+-patients = new ArrayList(): List&lt;Patient&gt;
+-appointments = new ArrayList(): List&lt;Appointment&gt;
+-users = new ArrayList(): List&lt;User&gt;
+--
++Clinic(): ctor
++getProviders(): List&lt;Provider&gt;
++setProviders(List&lt;Provider&gt; providers): void
++getPayments(): List&lt;Payment&gt;
++setPayments(List&lt;Payment&gt; payments): void
++getPatients(): List&lt;Patient&gt;
++setPatients(List&lt;Patient&gt; patients): void
++getAppointments(): List&lt;Appointment&gt;
++setAppointments(List&lt;Appointment&gt; appointments): void
++getUsers(): List&lt;User&gt;
++setUsers(List&lt;User&gt; users): void
++getFutureAppointments(): List&lt;Appointment&gt;
++getPastAppointments(): List&lt;Appointment&gt;
++searchProviders(ProviderSearchCriteria criteria): List&lt;Provider&gt;
++searchPatients(PatientSearchCriteria criteria): List&lt;Patient&gt;
++searchAppointments(AppointmentSearchCriteria criteria): List&lt;Appointment&gt;
++receivePayment(Payment payment): void
++getAccountBalance(int patientId): double
++productionReport(LocalDate startDate, LocalDate endDate, boolean groupBy): void
++patientBalanceReport(boolean sort): void
++collectionsReport(LocalDate startDate, LocalDate endDate, boolean groupBy): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>980</x>
+      <y>355</y>
+      <w>245</w>
+      <h>115</h>
+    </coordinates>
+    <panel_attributes>InsuranceInfo
+--
+-companyName: String
+-groupId: String
+-memberId: String
+--
++InsuranceInfo(String companyName, String groupId, String memberId): ctor
++getCompanyName(): String
++setCompanyName(String companyName): void
++getGroupId(): String
++setGroupId(String groupId): void
++getMemberId(): String
++setMemberId(String memberId): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>685</x>
+      <y>255</y>
+      <w>480</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Patient
+--
+-insurance: InsuranceInfo
+-paymentCard: PaymentCard
+--
++Patient(String firstName, String lastName, int uniqueId, String email, PhoneNumber phone, InsuranceInfo insurance, PaymentCard paymentCard): ctor
++getInsurance(): InsuranceInfo
++setInsurance(InsuranceInfo insurance): void
++getPaymentCard(): PaymentCard
++setPaymentCard(PaymentCard paymentCard): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>305</x>
+      <y>495</y>
+      <w>370</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>FutureAppointment
+--
+-patient: Patient
+-proceduresByProvider = new HashMap(): Map&lt;Provider, List&lt;Procedure&gt;&gt;
+--
++FutureAppointment(LocalDateTime dateTime, Patient patient, Provider provider, List&lt;Procedure&gt; procedures): ctor
++addProvider(Provider provider, List&lt;Procedure&gt; procedures): void
++getPatient(): Patient
++setPatient(Patient patient): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>770</y>
+      <w>220</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>AppointmentSearchCriteria
+--
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>695</y>
+      <w>205</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>PatientSearchCriteria
+--
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>685</x>
+      <y>355</y>
+      <w>290</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>PaymentCard
+--
+-number: long
+-expireDate: LocalDate
+-name: String
+-cvv: int
+-zipCode: int
+--
++PaymentCard(long number, LocalDate expireDate, String name, int cvv, int zipcode): ctor
++getNumber(): long
++setNumber(long number): void
++getExpireDate(): LocalDate
++setExpireDate(LocalDate expireDate): void
++getName(): String
++setName(String name): void
++getCvv(): int
++setCvv(int cvv): void
++getZipCode(): int
++setZipCode(int zipCode): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>315</x>
+      <y>255</y>
+      <w>315</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Person
+--
+-firstName: String
+-lastName: String
+-uniqueId: int
+-email: String
+-phone: PhoneNumber
+--
++Person(String firstName, String lastName, int uniqueId, String email, PhoneNumber phone): ctor
++getFirstName(): String
++setFirstName(String firstName): void
++getLastName(): String
++setLastName(String lastName): void
++getUniqueId(): int
++setUniqueId(int uniqueId): void
++getEmail(): String
++setEmail(String email): void
++getPhone(): PhoneNumber
++setPhone(PhoneNumber phone): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>290</x>
+      <y>580</y>
+      <w>385</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>ProcedureRecord
+--
+-patient: Patient
+-provider: Provider
+-appointment: Appointment
+-procedure: Procedure
+-cost: double
+--
++ProcedureRecord(Patient patient, Provider provider, Appointment appointment, Procedure procedure, double cost): ctor
++getPatient(): Patient
++setPatient(Patient patient): void
++getProvider(): Provider
++setProvider(Provider provider): void
++getAppointment(): Appointment
++setAppointment(Appointment appointment): void
++getProcedure(): Procedure
++setProcedure(Procedure procedure): void
++getCost(): double
++setCost(double cost): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>685</x>
+      <y>520</y>
+      <w>210</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Payment
+--
+-amount: double
+-patient: Patient
+-source: Sources
+--
++Payment(double amount, Patient patient, Sources source): ctor
++getAmount(): double
++setAmount(double amount): void
++getPatient(): Patient
++setPatient(Patient patient): void
++getSource(): Sources
++setSource(Sources source): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>905</x>
+      <y>520</y>
+      <w>200</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Procedure
+--
+-code: String
+-description: String
+-cost: double
+--
++Procedure(String code, String description, double cost): ctor
++getCode(): String
++setCode(String code): void
++getDescription(): String
++setDescription(String description): void
++getCost(): double
++setCost(double cost): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>300</x>
+      <y>430</y>
+      <w>375</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Provider
+--
+-title: ProviderType
+--
++Provider(String firstName, String lastName, int uniqueId, String email, PhoneNumber phone, ProviderType title): ctor
++getTitle(): ProviderType
++setTitle(ProviderType title): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>370</x>
+      <y>140</y>
+      <w>185</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>PhoneNumber
+--
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>730</y>
+      <w>210</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>ProviderSearchCriteria
+--
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>240</y>
+      <w>180</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>StandardUser
+--
+--
++StandardUser(String username, String password): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>140</y>
+      <w>155</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>User
+--
+-username: String
+-password: String
+--
++User(String username, String password): ctor
++changePassword(String password): void
++getUsername(): String
++setUsername(String username): void
++getPassword(): String
++setPassword(String password): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>210</x>
+      <y>210</y>
+      <w>85</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>ProviderType &lt;enum&gt;
+-
+Dentist,
+Hygienist,
+Assistant</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>210</x>
+      <y>260</y>
+      <w>85</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Sources &lt;enum&gt;
+-
+Patient,
+InsuranceProvider</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>210</x>
+      <y>305</y>
+      <w>85</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>UserRole &lt;enum&gt;
+-
+Standard,
+Administrative</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>0</x>
+      <y>115</y>
+      <w>1235</w>
+      <h>700</h>
+    </coordinates>
+    <panel_attributes>Model
+--
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1365</x>
+      <y>290</y>
+      <w>235</w>
+      <h>115</h>
+    </coordinates>
+    <panel_attributes>View
+--
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1370</x>
+      <y>560</y>
+      <w>205</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Controller
+--
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1375</x>
+      <y>315</y>
+      <w>215</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes>UserInteraction
+--
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1385</x>
+      <y>595</y>
+      <w>180</w>
+      <h>85</h>
+    </coordinates>
+    <panel_attributes>DentistController
+--
+~clinic: Clinic
+--
++run(): void
+-login(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1485</x>
+      <y>400</y>
+      <w>45</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;updates&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;340.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1230</x>
+      <y>615</y>
+      <w>150</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;uses&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;280.0;20.0</additional_attributes>
+  </element>
+</diagram>
