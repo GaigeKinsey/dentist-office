@@ -16,10 +16,7 @@ public class Clinic implements Serializable{
 	private List<Patient> patients = new ArrayList<>();
 	private List<Appointment> appointments = new ArrayList<>();
 	private List<User> users = new ArrayList<>();
-	
-	public Clinic () {
-		users.add(new User("Administrator", "1234Password"));
-	}
+
 	
 	public List<Provider> getProviders() {
 		return providers;
@@ -61,6 +58,10 @@ public class Clinic implements Serializable{
 		this.users = users;
 	}
 
+	public void addUser(User user) {
+		this.users.add(user);
+	}
+	
 	public List<Appointment> getFutureAppointments(){
 		return null;
 	}
