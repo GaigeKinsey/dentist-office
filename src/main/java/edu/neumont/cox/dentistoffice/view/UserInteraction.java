@@ -47,4 +47,14 @@ public class UserInteraction implements UserInteractionInterface{
 	public void invalidUser() {
 		ConsoleIO.displayMessage("Invalid username or password.");
 	}
+
+	@Override
+	public int addSomeoneSubMenu() {
+		return ConsoleIO.promptForMenuSelection(new String[] {"Add User", "Add Patient", "Exit to main menu"}, false);
+	}
+
+	@Override
+	public int removeSomeoneSubMenu() {
+		return ConsoleIO.promptForMenuSelection(new String[] {"Remove User", "Remove Patient", "Exit to main menu"}, true);
+	}
 }
