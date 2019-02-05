@@ -30,7 +30,7 @@ public class UserInteraction implements UserInteractionInterface{
 
 	@Override
 	public int dentistOfficeMenu() {
-		return ConsoleIO.promptForMenuSelection(new String[] {"Search", "Add Someone", "Remove Someone", "Run a Report", "Save"}, true);
+		return ConsoleIO.promptForMenuSelection(new String[] {"Search", "Schedule an Appointment", "Add Someone", "Remove Someone", "Run a Report", "Save"}, true);
 	}
 
 	@Override
@@ -50,11 +50,26 @@ public class UserInteraction implements UserInteractionInterface{
 
 	@Override
 	public int addSomeoneSubMenu() {
-		return ConsoleIO.promptForMenuSelection(new String[] {"Add User", "Add Patient", "Exit to main menu"}, false);
+		return ConsoleIO.promptForMenuSelection(new String[] {"Add User", "Add Patient", "Add Provider", "Exit to main menu"}, false);
 	}
 
 	@Override
 	public int removeSomeoneSubMenu() {
-		return ConsoleIO.promptForMenuSelection(new String[] {"Remove User", "Remove Patient", "Exit to main menu"}, true);
+		return ConsoleIO.promptForMenuSelection(new String[] {"Remove User", "Remove Patient", "Add Provider", "Exit to main menu"}, false);
+	}
+
+	@Override
+	public int userRoleChoice() {
+		return ConsoleIO.promptForMenuSelection(new String[] {"Administrative", "Standard User", "Exit to main menu"}, false);
+	}
+
+	@Override
+	public String getFirstName() {
+		return ConsoleIO.promptForInput("Please enter their first name.", false);
+	}
+
+	@Override
+	public String getLastName() {
+		return ConsoleIO.promptForInput("Please enter their last name.", false);
 	}
 }
