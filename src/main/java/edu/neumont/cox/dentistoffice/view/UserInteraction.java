@@ -72,4 +72,9 @@ public class UserInteraction implements UserInteractionInterface{
 	public String getLastName() {
 		return ConsoleIO.promptForInput("Please enter their last name.", false);
 	}
+
+	@Override
+	public int reportsMenu() {
+		return ConsoleIO.promptForMenuSelection(new String[] {"Production Reports", "Patient Balance Reports", "Collections Reports", "Exit to main menu"}, false);
+	}
 }
