@@ -30,8 +30,7 @@ public class UserInteraction implements UserInteractionInterface{
 
 	@Override
 	public int dentistOfficeMenu() {
-		
-		return 0;
+		return ConsoleIO.promptForMenuSelection(new String[] {"Search", "Add Someone", "Remove Someone", "Run a Report", "Save"}, true);
 	}
 
 	@Override
