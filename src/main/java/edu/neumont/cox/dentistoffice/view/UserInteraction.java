@@ -1,5 +1,8 @@
 package edu.neumont.cox.dentistoffice.view;
 
+import java.io.Console;
+import java.time.LocalDate;
+
 import lib.ConsoleIO;
 
 public class UserInteraction implements UserInteractionInterface{
@@ -76,5 +79,72 @@ public class UserInteraction implements UserInteractionInterface{
 	@Override
 	public int reportsMenu() {
 		return ConsoleIO.promptForMenuSelection(new String[] {"Production Reports", "Patient Balance Reports", "Collections Reports", "Exit to main menu"}, false);
+	}
+
+	@Override
+	public int getUniqueId() {
+		return ConsoleIO.promptForInt("Please enter their Unique ID.", 0, Integer.MAX_VALUE);
+	}
+
+	@Override
+	public String getEmail() {
+		return ConsoleIO.promptForInput("Please enter their email.", false);
+	}
+
+	@Override
+	public String getCompanyName() {
+		return ConsoleIO.promptForInput("Please enter their company name.", false);
+	}
+
+	@Override
+	public String getGroupId() {
+		return ConsoleIO.promptForInput("Please enter the group ID.", false);
+	}
+
+	@Override
+	public String getMemberId() {
+		return ConsoleIO.promptForInput("Please enter the member ID.", false);
+	}
+
+	@Override
+	public void insuranceProviderPrompt() {
+		ConsoleIO.displayMessage("Please provide their Insurance Information");		
+	}
+
+	@Override
+	public void paymentCardPrompt() {
+		ConsoleIO.displayMessage("Please provide their Card Payment Information");		
+	}
+
+	@Override
+	public long getCardNumber() {
+		return ConsoleIO.promptForLong("Please enter the Card Number.", 0, Long.MAX_VALUE);
+	}
+
+	@Override
+	public LocalDate getExpireDate() {
+		// TODO 
+		//Dont understand localdate with only month and year
+		return null;
+	}
+
+	@Override
+	public String getHolderName() {
+		return ConsoleIO.promptForInput("Please enter the Cardholder Name.", false);
+	}
+
+	@Override
+	public int getCVV() {
+		return ConsoleIO.promptForInt("Please enter the CVV number.", 0, Integer.MAX_VALUE);
+	}
+
+	@Override
+	public int getZipCode() {
+		return ConsoleIO.promptForInt("Please enter the zip code.", 0, Integer.MAX_VALUE);
+	}
+
+	@Override
+	public int getProviderType() {
+		return ConsoleIO.promptForMenuSelection(new String[] {"Assistant", "Dentist", "Hygenist", "Exit to main menu"}, false);
 	}
 }
