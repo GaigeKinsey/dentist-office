@@ -1,14 +1,14 @@
 package edu.neumont.cox.dentistoffice.view;
 
-import java.io.Console;
 import java.time.LocalDate;
 
 import lib.ConsoleIO;
 
-public class UserInteraction implements UserInteractionInterface{
+public class UserInteraction implements UserInteractionInterface {
 
 	public String adminPasswordChange() {
-		return ConsoleIO.promptForInput("Admin must change their password on first login.\nWhat do you want your new password to be?", false);
+		return ConsoleIO.promptForInput(
+				"Admin must change their password on first login.\nWhat do you want your new password to be?", false);
 	}
 
 	@Override
@@ -33,7 +33,8 @@ public class UserInteraction implements UserInteractionInterface{
 
 	@Override
 	public int dentistOfficeMenu() {
-		return ConsoleIO.promptForMenuSelection(new String[] {"Search", "Schedule an Appointment", "Add Someone", "Remove Someone", "Run a Report", "Save"}, true);
+		return ConsoleIO.promptForMenuSelection(new String[] { "Search", "Schedule an Appointment", "Add Someone",
+				"Remove Someone", "Run a Report", "Save" }, true);
 	}
 
 	@Override
@@ -47,23 +48,43 @@ public class UserInteraction implements UserInteractionInterface{
 	}
 
 	@Override
+	public String createPassword() {
+		boolean valid = false;
+		String password = "";
+		do {
+			password = ConsoleIO.promptForInput("Please enter in a password.", false);
+			valid = checkPassword(password);
+			if (!valid) {
+				passwordMismatch();
+			}
+		} while (!valid);
+
+		return password;
+	}
+
+	@Override
 	public void invalidUser() {
 		ConsoleIO.displayMessage("Invalid username or password.");
 	}
 
 	@Override
+	public int searchSubMenu() {
+		return ConsoleIO.promptForMenuSelection(new String[] {}, true);
+	}
+
+	@Override
 	public int addSomeoneSubMenu() {
-		return ConsoleIO.promptForMenuSelection(new String[] {"Add User", "Add Patient", "Add Provider", "Exit to main menu"}, false);
+		return ConsoleIO.promptForMenuSelection(new String[] { "Add User", "Add Patient", "Add Provider" }, true);
 	}
 
 	@Override
 	public int removeSomeoneSubMenu() {
-		return ConsoleIO.promptForMenuSelection(new String[] {"Remove User", "Remove Patient", "Add Provider", "Exit to main menu"}, false);
+		return ConsoleIO.promptForMenuSelection(new String[] { "Remove User", "Remove Patient", "Add Provider" }, true);
 	}
 
 	@Override
 	public int userRoleChoice() {
-		return ConsoleIO.promptForMenuSelection(new String[] {"Administrative", "Standard User", "Exit to main menu"}, false);
+		return ConsoleIO.promptForMenuSelection(new String[] { "Administrative", "Standard User" }, true);
 	}
 
 	@Override
@@ -78,7 +99,8 @@ public class UserInteraction implements UserInteractionInterface{
 
 	@Override
 	public int reportsMenu() {
-		return ConsoleIO.promptForMenuSelection(new String[] {"Production Reports", "Patient Balance Reports", "Collections Reports", "Exit to main menu"}, false);
+		return ConsoleIO.promptForMenuSelection(new String[] { "Production Reports", "Patient Balance Reports",
+				"Collections Reports", "Exit to main menu" }, false);
 	}
 
 	@Override
@@ -108,12 +130,12 @@ public class UserInteraction implements UserInteractionInterface{
 
 	@Override
 	public void insuranceProviderPrompt() {
-		ConsoleIO.displayMessage("Please provide their Insurance Information");		
+		ConsoleIO.displayMessage("Please provide their Insurance Information");
 	}
 
 	@Override
 	public void paymentCardPrompt() {
-		ConsoleIO.displayMessage("Please provide their Card Payment Information");		
+		ConsoleIO.displayMessage("Please provide their Card Payment Information");
 	}
 
 	@Override
@@ -123,8 +145,8 @@ public class UserInteraction implements UserInteractionInterface{
 
 	@Override
 	public LocalDate getExpireDate() {
-		// TODO 
-		//Dont understand localdate with only month and year
+		// TODO
+		// Dont understand localdate with only month and year
 		return null;
 	}
 
@@ -145,6 +167,7 @@ public class UserInteraction implements UserInteractionInterface{
 
 	@Override
 	public int getProviderType() {
-		return ConsoleIO.promptForMenuSelection(new String[] {"Assistant", "Dentist", "Hygenist", "Exit to main menu"}, false);
+		return ConsoleIO.promptForMenuSelection(
+				new String[] { "Assistant", "Dentist", "Hygenist", "Exit to main menu" }, false);
 	}
 }
