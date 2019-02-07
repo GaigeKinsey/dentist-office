@@ -1,7 +1,9 @@
 package edu.neumont.cox.dentistoffice.view;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import edu.neumont.cox.dentistoffice.model.User;
 import lib.ConsoleIO;
 
 public class UserInteraction implements UserInteractionInterface {
@@ -38,11 +40,6 @@ public class UserInteraction implements UserInteractionInterface {
 	}
 
 	@Override
-	public String getUsername() {
-		return ConsoleIO.promptForInput("Please enter in a username.", false);
-	}
-
-	@Override
 	public String getPassword() {
 		return ConsoleIO.promptForInput("Please enter in a password.", false);
 	}
@@ -69,7 +66,8 @@ public class UserInteraction implements UserInteractionInterface {
 
 	@Override
 	public int searchSubMenu() {
-		return ConsoleIO.promptForMenuSelection(new String[] {}, true);
+		return ConsoleIO.promptForMenuSelection(new String[] { "Search Users", "Search Patients", "Search Providers" },
+				true);
 	}
 
 	@Override
@@ -95,6 +93,26 @@ public class UserInteraction implements UserInteractionInterface {
 	@Override
 	public String getLastName() {
 		return ConsoleIO.promptForInput("Please enter their last name.", false);
+	}
+
+	@Override
+	public String getUsername() {
+		return ConsoleIO.promptForInput("Please enter in a username.", false);
+	}
+
+	@Override
+	public String getSearchFirstName() {
+		return ConsoleIO.promptForInput("Please enter their first name.", true);
+	}
+
+	@Override
+	public String getSearchLastName() {
+		return ConsoleIO.promptForInput("Please enter their last name.", true);
+	}
+
+	@Override
+	public String getSearchUsername() {
+		return ConsoleIO.promptForInput("Please enter in a username.", true);
 	}
 
 	@Override
@@ -169,5 +187,14 @@ public class UserInteraction implements UserInteractionInterface {
 	public int getProviderType() {
 		return ConsoleIO.promptForMenuSelection(
 				new String[] { "Assistant", "Dentist", "Hygenist", "Exit to main menu" }, false);
+	}
+
+	@Override
+	public int getSearchSelection(List<User> matchedUsers) {
+		String[] users = new String[matchedUsers.size()];
+		for (int i = 0; i < users.length; i++) {
+			users[i] = matchedUsers.get(i).toString();
+		}
+		return ConsoleIO.promptForMenuSelection(users, true);
 	}
 }
