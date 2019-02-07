@@ -3,6 +3,8 @@ package edu.neumont.cox.dentistoffice.view;
 import java.time.LocalDate;
 import java.util.List;
 
+import edu.neumont.cox.dentistoffice.model.Patient;
+import edu.neumont.cox.dentistoffice.model.Provider;
 import edu.neumont.cox.dentistoffice.model.User;
 import lib.ConsoleIO;
 
@@ -175,12 +177,12 @@ public class UserInteraction implements UserInteractionInterface {
 
 	@Override
 	public int getCVV() {
-		return ConsoleIO.promptForInt("Please enter the CVV number.", 0, Integer.MAX_VALUE);
+		return ConsoleIO.promptForInt("Please enter the CVV number.", 0, 999);
 	}
 
 	@Override
 	public int getZipCode() {
-		return ConsoleIO.promptForInt("Please enter the zip code.", 0, Integer.MAX_VALUE);
+		return ConsoleIO.promptForInt("Please enter the zip code.", 0, 99999);
 	}
 
 	@Override
@@ -190,11 +192,48 @@ public class UserInteraction implements UserInteractionInterface {
 	}
 
 	@Override
-	public int getSearchSelection(List<User> matchedUsers) {
+	public int getUserSearchSelection(List<User> matchedUsers) {
 		String[] users = new String[matchedUsers.size()];
 		for (int i = 0; i < users.length; i++) {
 			users[i] = matchedUsers.get(i).toString();
 		}
 		return ConsoleIO.promptForMenuSelection(users, true);
 	}
+
+	@Override
+	public int getPatientSearchSelection(List<Patient> matchedPatients) {
+		String[] patients = new String[matchedPatients.size()];
+		for (int i = 0; i < patients.length; i++) {
+			patients[i] = matchedPatients.get(i).toString();
+		}
+		return ConsoleIO.promptForMenuSelection(patients, true);
+	}
+
+	@Override
+	public int getProviderSearchSelection(List<Provider> matchedProviders) {
+		String[] providers = new String[matchedProviders.size()];
+		for (int i = 0; i < providers.length; i++) {
+			providers[i] = matchedProviders.get(i).toString();
+		}
+		return ConsoleIO.promptForMenuSelection(providers, true);
+	}
+
+	@Override
+	public String getSearchCompanyName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getSearchGroupId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getSearchMemberId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
