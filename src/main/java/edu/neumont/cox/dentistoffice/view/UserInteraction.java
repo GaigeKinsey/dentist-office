@@ -164,8 +164,8 @@ public class UserInteraction implements UserInteractionInterface {
 	}
 
 	@Override
-	public long getCardNumber() {
-		return ConsoleIO.promptForLong("Please enter the Card Number.", 0, Long.MAX_VALUE);
+	public String getCardNumber() {
+		return ConsoleIO.promptForInput("Please enter the Card Number. (16 digits)", false);
 	}
 
 	@Override
@@ -221,5 +221,20 @@ public class UserInteraction implements UserInteractionInterface {
 			providers[i] = matchedProviders.get(i).toString();
 		}
 		return ConsoleIO.promptForMenuSelection(providers, true);
+	}
+
+	@Override
+	public String getPhoneNumberString() {
+		return ConsoleIO.promptForInput("Please enter their phone number (10 digits)", false);
+	}
+
+	@Override
+	public void invalidPhone() {
+		ConsoleIO.displayMessage("Invalid phone number, just enter the 10 digits.");
+	}
+
+	@Override
+	public void invalidCard() {
+		ConsoleIO.displayMessage("Invalid credit card number, just enter the 16 digits.");
 	}
 }
