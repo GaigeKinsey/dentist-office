@@ -193,7 +193,7 @@ public class UserInteraction implements UserInteractionInterface {
 	@Override
 	public int getProviderType() {
 		return ConsoleIO.promptForMenuSelection(
-				new String[] { "Assistant", "Dentist", "Hygenist", "Exit to main menu" }, false);
+				new String[] { "Assistant", "Dentist", "Hygenist"}, false);
 	}
 
 	@Override
