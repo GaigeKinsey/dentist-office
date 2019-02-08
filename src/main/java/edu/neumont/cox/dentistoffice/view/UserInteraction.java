@@ -1,6 +1,5 @@
 package edu.neumont.cox.dentistoffice.view;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import edu.neumont.cox.dentistoffice.model.Patient;
@@ -12,7 +11,8 @@ public class UserInteraction implements UserInteractionInterface {
 
 	public String adminPasswordChange() {
 		return ConsoleIO.promptForInput(
-				"Administrator must change their password on first login.\nWhat do you want your new password to be?", false);
+				"Administrator must change their password on first login.\nWhat do you want your new password to be?",
+				false);
 	}
 
 	@Override
@@ -116,7 +116,7 @@ public class UserInteraction implements UserInteractionInterface {
 	public String getSearchUsername() {
 		return ConsoleIO.promptForInput("Please enter in a username.", true);
 	}
-	
+
 	@Override
 	public String getSearchCompanyName() {
 		return ConsoleIO.promptForInput("Please enter the insurance company name", true);
@@ -169,13 +169,6 @@ public class UserInteraction implements UserInteractionInterface {
 	}
 
 	@Override
-	public LocalDate getExpireDate() {
-		// TODO
-		// Dont understand localdate with only month and year
-		return null;
-	}
-
-	@Override
 	public String getHolderName() {
 		return ConsoleIO.promptForInput("Please enter the Cardholder Name.", false);
 	}
@@ -192,8 +185,7 @@ public class UserInteraction implements UserInteractionInterface {
 
 	@Override
 	public int getProviderType() {
-		return ConsoleIO.promptForMenuSelection(
-				new String[] { "Assistant", "Dentist", "Hygenist"}, false);
+		return ConsoleIO.promptForMenuSelection(new String[] { "Assistant", "Dentist", "Hygenist" }, false);
 	}
 
 	@Override
@@ -230,16 +222,27 @@ public class UserInteraction implements UserInteractionInterface {
 
 	@Override
 	public void invalidPhone() {
-		ConsoleIO.displayMessage("Invalid phone number, just enter the 10 digits.");
+		ConsoleIO.displayMessage("Invalid phone number, please enter the 10 digits.");
 	}
 
 	@Override
 	public void invalidCard() {
-		ConsoleIO.displayMessage("Invalid credit card number, just enter the 16 digits.");
+		ConsoleIO.displayMessage("Invalid credit card number, please enter the 16 digits.");
+	}
+
+	@Override
+	public void invalidExpireDate() {
+		ConsoleIO.displayMessage("Invalid expiration date, please enter the month/year.");
 	}
 
 	@Override
 	public int scheduleForPatients() {
-		return ConsoleIO.promptForMenuSelection(new String[] { "Schedule for a new patient", "Schedule for an existing patient" }, true);
-	}	
+		return ConsoleIO.promptForMenuSelection(
+				new String[] { "Schedule for a new patient", "Schedule for an existing patient" }, true);
+	}
+
+	@Override
+	public String getExpireDate() {
+		return ConsoleIO.promptForInput("Please enter in expiration month/year. (03/19)", false);
+	}
 }
