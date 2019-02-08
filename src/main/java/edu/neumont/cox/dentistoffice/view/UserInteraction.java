@@ -116,6 +116,11 @@ public class UserInteraction implements UserInteractionInterface {
 	public String getSearchUsername() {
 		return ConsoleIO.promptForInput("Please enter in a username.", true);
 	}
+	
+	@Override
+	public String getSearchCompanyName() {
+		return ConsoleIO.promptForInput("Please enter the insurance company name", true);
+	}
 
 	@Override
 	public int reportsMenu() {
@@ -217,23 +222,4 @@ public class UserInteraction implements UserInteractionInterface {
 		}
 		return ConsoleIO.promptForMenuSelection(providers, true);
 	}
-
-	@Override
-	public String getSearchCompanyName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getSearchGroupId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getSearchMemberId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
