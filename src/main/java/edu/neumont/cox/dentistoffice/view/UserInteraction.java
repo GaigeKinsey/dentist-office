@@ -237,4 +237,9 @@ public class UserInteraction implements UserInteractionInterface {
 	public void invalidCard() {
 		ConsoleIO.displayMessage("Invalid credit card number, just enter the 16 digits.");
 	}
+
+	@Override
+	public int scheduleForPatients() {
+		return ConsoleIO.promptForMenuSelection(new String[] { "Schedule for a new patient", "Schedule for an existing patient" }, true);
+	}	
 }
