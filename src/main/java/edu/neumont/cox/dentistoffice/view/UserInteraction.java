@@ -38,7 +38,7 @@ public class UserInteraction implements UserInteractionInterface {
 	@Override
 	public int dentistOfficeMenu() {
 		return ConsoleIO.promptForMenuSelection(new String[] { "Search", "Schedule an Appointment", "Add Someone",
-				"Remove Someone", "Run a Report", "Save" }, true);
+				"Remove Someone", "Run a Report", "User Settings", "Save" }, true);
 	}
 
 	@Override
@@ -68,7 +68,7 @@ public class UserInteraction implements UserInteractionInterface {
 
 	@Override
 	public int searchSubMenu() {
-		return ConsoleIO.promptForMenuSelection(new String[] { "Search Users", "Search Patients", "Search Providers" },
+		return ConsoleIO.promptForMenuSelection(new String[] { "Search Users", "Search Patients", "Search Providers", "Search Appointments" },
 				true);
 	}
 
@@ -244,5 +244,36 @@ public class UserInteraction implements UserInteractionInterface {
 	@Override
 	public String getExpireDate() {
 		return ConsoleIO.promptForInput("Please enter in expiration month/year. (03/19)", false);
+	}
+
+	@Override
+	public boolean changePasswordDecision() {
+		return ConsoleIO.promptForBool("Would you like to change your password? ", "y", "n");
+	}
+
+	@Override
+	public int changeUserPassword() {
+		return ConsoleIO.promptForMenuSelection(
+				new String[] { "Change your password", "Change another user's password" }, true);
+	}
+
+	@Override
+	public String changePassword() {
+		return ConsoleIO.promptForInput("What do you want the new password to be?", false);
+	}
+	
+	@Override
+	public String getProcedureCode() {
+		return ConsoleIO.promptForInput("Please enter the procedures code. D:", false);
+	}
+	
+	@Override
+	public String getProcedureDescription() {
+		return ConsoleIO.promptForInput("Please enter the description of this procedure.", false);
+	}
+	
+	@Override
+	public Double getProcedureCost() {
+		return ConsoleIO.promptForDouble("Please enter the cost of the procedure.", 0, Double.MAX_VALUE);
 	}
 }
