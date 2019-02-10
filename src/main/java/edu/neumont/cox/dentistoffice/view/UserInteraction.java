@@ -476,40 +476,40 @@ public class UserInteraction implements UserInteractionInterface {
 		
 		switch(month) {
 			case 1:	
-				day = ConsoleIO.promptForInt("What is their day of birth?: ", 1, 31);
+				day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 31);
 				break;
 			case 3:
-				day = ConsoleIO.promptForInt("What is their day of birth?: ", 1, 31);
+				day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 31);
 				break;
 			case 5:
-				day = ConsoleIO.promptForInt("What is their day of birth?: ", 1, 31);
+				day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 31);
 				break;
 			case 7:
-				day = ConsoleIO.promptForInt("What is their day of birth?: ", 1, 31);
+				day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 31);
 				break;
 			case 8:
-				day = ConsoleIO.promptForInt("What is their day of birth?: ", 1, 31);
+				day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 31);
 				break;
 			case 10:
-				day = ConsoleIO.promptForInt("What is their day of birth?: ", 1, 31);
+				day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 31);
 				break;
 			case 12:	
-				day = ConsoleIO.promptForInt("What is their day of birth?: ", 1, 31);
+				day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 31);
 				break;
 			case 2: 
-				day = ConsoleIO.promptForInt("What is their day of birth?: ", 1, 28);
+				day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 28);
 				break;
 			case 4:	
-				day = ConsoleIO.promptForInt("What is their day of birth?: ", 1, 30);
+				day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 30);
 				break;
 			case 6:
-				day = ConsoleIO.promptForInt("What is their day of birth?: ", 1, 30);
+				day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 30);
 				break;
 			case 9:
-				day = ConsoleIO.promptForInt("What is their day of birth?: ", 1, 30);
+				day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 30);
 				break;
 			case 11:
-				day = ConsoleIO.promptForInt("What is their day of birth?: ", 1, 30);
+				day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 30);
 				break;
 			default:
 				break;
