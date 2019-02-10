@@ -68,8 +68,8 @@ public class UserInteraction implements UserInteractionInterface {
 
 	@Override
 	public int searchSubMenu() {
-		return ConsoleIO.promptForMenuSelection(new String[] { "Search Users", "Search Patients", "Search Providers", "Search Appointments" },
-				true);
+		return ConsoleIO.promptForMenuSelection(
+				new String[] { "Search Users", "Search Patients", "Search Providers", "Search Appointments" }, true);
 	}
 
 	@Override
@@ -261,19 +261,75 @@ public class UserInteraction implements UserInteractionInterface {
 	public String changePassword() {
 		return ConsoleIO.promptForInput("What do you want the new password to be?", false);
 	}
-	
+
 	@Override
 	public String getProcedureCode() {
 		return ConsoleIO.promptForInput("Please enter the procedures code. D:", false);
 	}
-	
+
 	@Override
 	public String getProcedureDescription() {
 		return ConsoleIO.promptForInput("Please enter the description of this procedure.", false);
 	}
-	
+
 	@Override
 	public Double getProcedureCost() {
 		return ConsoleIO.promptForDouble("Please enter the cost of the procedure.", 0, Double.MAX_VALUE);
+	}
+
+	@Override
+	public int scheduleForProviders() {
+		return ConsoleIO.promptForMenuSelection(
+				new String[] { "Schedule with a new provider.", "Schedule with an existing provider." }, false);
+	}
+
+	@Override
+	public boolean addMoreProcedures() {
+		return ConsoleIO.promptForBool("Would you like to add another procedure?\n1: Yes\n2: No", "1", "2");
+	}
+
+	@Override
+	public int getYear() {
+		return ConsoleIO.promptForInt("What year is the appointment?", 1, Integer.MAX_VALUE);
+	}
+
+	@Override
+	public int getMonth() {
+		return ConsoleIO.promptForInt("What month is the appointment?", 1, 12);
+	}
+
+	@Override
+	public int getDayOfMonth() {
+		return ConsoleIO.promptForInt("What day is the appointment?", 1, 31);
+	}
+
+	@Override
+	public int getHour() {
+		return ConsoleIO.promptForInt("What hour is the appointment?", 0, 24);
+	}
+
+	@Override
+	public int getMinute() {
+		return ConsoleIO.promptForInt("What minute is the appointment?", 0, 60);
+	}
+
+	@Override
+	public boolean addMoreProviders() {
+		return ConsoleIO.promptForBool("Would you like to add another provider?\n1: Yes\n2: No", "1", "2");
+	}
+
+	@Override
+	public void notifySearchingProvider() {
+		ConsoleIO.displayMessage("Now enter the information for the provider you want.");
+	}
+
+	@Override
+	public void notifySearchingPatient() {
+		ConsoleIO.displayMessage("Now enter the information for the Patient you want.");
+	}
+
+	@Override
+	public void invalidAppointmentDate() {
+		ConsoleIO.displayMessage("Invalid time for an appointment.");
 	}
 }
