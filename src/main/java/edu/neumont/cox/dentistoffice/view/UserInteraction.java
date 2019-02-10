@@ -2,14 +2,14 @@ package edu.neumont.cox.dentistoffice.view;
 
 import java.util.List;
 
+import edu.neumont.cox.dentistoffice.model.Appointment;
 import edu.neumont.cox.dentistoffice.model.Patient;
 import edu.neumont.cox.dentistoffice.model.Provider;
 import edu.neumont.cox.dentistoffice.model.User;
 import lib.ConsoleIO;
 
-
 /**
- * @author Gaige & Chris 
+ * @author Gaige & Chris
  *
  */
 public class UserInteraction implements UserInteractionInterface {
@@ -326,6 +326,16 @@ public class UserInteraction implements UserInteractionInterface {
 		return ConsoleIO.promptForMenuSelection(providers, true);
 	}
 
+	@Override
+	public int getAppointmentSearchSelection(List<Appointment> matchedAppointments) {
+		String[] appointments = new String[matchedAppointments.size()];
+		for (int i = 0; i < appointments.length; i++) {
+			appointments[i] = matchedAppointments.get(i).toString();
+		}
+		return ConsoleIO.promptForMenuSelection(appointments, true);
+
+	}
+
 	/**
 	 * 
 	 */
@@ -461,16 +471,59 @@ public class UserInteraction implements UserInteractionInterface {
 	 * 
 	 */
 	@Override
-	public int getDayOfMonth() {
-		return ConsoleIO.promptForInt("What day is the appointment?", 1, 31);
-	}
+	public int getDayOfMonth(int month) {
+		int day = 0;
+		
+		switch(month) {
+			case 1:	
+				day = ConsoleIO.promptForInt("What is their day of birth?: ", 1, 31);
+				break;
+			case 3:
+				day = ConsoleIO.promptForInt("What is their day of birth?: ", 1, 31);
+				break;
+			case 5:
+				day = ConsoleIO.promptForInt("What is their day of birth?: ", 1, 31);
+				break;
+			case 7:
+				day = ConsoleIO.promptForInt("What is their day of birth?: ", 1, 31);
+				break;
+			case 8:
+				day = ConsoleIO.promptForInt("What is their day of birth?: ", 1, 31);
+				break;
+			case 10:
+				day = ConsoleIO.promptForInt("What is their day of birth?: ", 1, 31);
+				break;
+			case 12:	
+				day = ConsoleIO.promptForInt("What is their day of birth?: ", 1, 31);
+				break;
+			case 2: 
+				day = ConsoleIO.promptForInt("What is their day of birth?: ", 1, 28);
+				break;
+			case 4:	
+				day = ConsoleIO.promptForInt("What is their day of birth?: ", 1, 30);
+				break;
+			case 6:
+				day = ConsoleIO.promptForInt("What is their day of birth?: ", 1, 30);
+				break;
+			case 9:
+				day = ConsoleIO.promptForInt("What is their day of birth?: ", 1, 30);
+				break;
+			case 11:
+				day = ConsoleIO.promptForInt("What is their day of birth?: ", 1, 30);
+				break;
+			default:
+				break;
+		}
+		
+		return day;
+			}
 
 	/**
 	 * 
 	 */
 	@Override
 	public int getHour() {
-		return ConsoleIO.promptForInt("What hour is the appointment?", 0, 24);
+		return ConsoleIO.promptForInt("What hour is the appointment?", 0, 23);
 	}
 
 	/**
@@ -478,7 +531,7 @@ public class UserInteraction implements UserInteractionInterface {
 	 */
 	@Override
 	public int getMinute() {
-		return ConsoleIO.promptForInt("What minute is the appointment?", 0, 60);
+		return ConsoleIO.promptForInt("What minute is the appointment?", 0, 59);
 	}
 
 	/**
@@ -512,4 +565,37 @@ public class UserInteraction implements UserInteractionInterface {
 	public void invalidAppointmentDate() {
 		ConsoleIO.displayMessage("Invalid time for an appointment.");
 	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public void askForStartDate() {
+		ConsoleIO.displayMessage("Please enter the starting date.");
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public void askForEndDate() {
+		ConsoleIO.displayMessage("Please enter the ending date.");
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public boolean groupBySelection() {
+		return ConsoleIO.promptForBool("Do you want to group them by month or by day?", "m", "d");
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public boolean sortBySelection() {
+		return ConsoleIO.promptForBool("Do you want to sort them by largest to smallest or by name?", "l", "n");
+	}
+
 }
