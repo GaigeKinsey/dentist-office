@@ -130,7 +130,7 @@ public class UserInteraction implements UserInteractionInterface {
 	@Override
 	public int reportsMenu() {
 		return ConsoleIO.promptForMenuSelection(new String[] { "Production Reports", "Patient Balance Reports",
-				"Collections Reports", "Exit to main menu" }, false);
+				"Collections Reports" }, true);
 	}
 
 	@Override
@@ -403,12 +403,12 @@ public class UserInteraction implements UserInteractionInterface {
 
 	@Override
 	public boolean groupBySelection() {
-		return ConsoleIO.promptForBool("Do you want to group them by month or by day?", "m", "d");
+		return ConsoleIO.promptForBool("Do you want to group them by month or by day? (m, d)", "m", "d");
 	}
 
 	@Override
 	public boolean sortBySelection() {
-		return ConsoleIO.promptForBool("Do you want to sort them by largest to smallest or by name?", "l", "n");
+		return ConsoleIO.promptForBool("Do you want to sort them by largest to smallest or by name? (l, n)", "l", "n");
 	}
 
 	@Override
@@ -455,5 +455,12 @@ public class UserInteraction implements UserInteractionInterface {
 	@Override
 	public void recordPaymentFailed() {
 		ConsoleIO.displayMessage("Payment record failed, no patient to record the payment for.");
+	}
+
+	@Override
+	public void printSort(List<Patient> patients) {
+		for (Patient patient : patients) {
+			ConsoleIO.displayMessage(patient.getPatientWithBalance());
+		}
 	}
 }
