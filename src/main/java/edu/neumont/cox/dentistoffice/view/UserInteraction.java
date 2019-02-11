@@ -1,6 +1,9 @@
 package edu.neumont.cox.dentistoffice.view;
 
+import java.time.LocalDate;
+import java.time.format.TextStyle;
 import java.util.List;
+import java.util.Locale;
 
 import edu.neumont.cox.dentistoffice.model.Appointment;
 import edu.neumont.cox.dentistoffice.model.Patient;
@@ -40,7 +43,7 @@ public class UserInteraction implements UserInteractionInterface {
 	@Override
 	public int dentistOfficeMenu() {
 		return ConsoleIO.promptForMenuSelection(new String[] { "Search", "Schedule an Appointment", "Add Someone",
-				"Remove Someone", "Run a Report", "User Settings", "Save" }, true);
+				"Remove Someone", "Record a Payment", "Run a Report", "User Settings", "Save" }, true);
 	}
 
 	@Override
@@ -196,7 +199,7 @@ public class UserInteraction implements UserInteractionInterface {
 		for (int i = 0; i < users.length; i++) {
 			users[i] = matchedUsers.get(i).toString();
 		}
-		return ConsoleIO.promptForMenuSelection(users, true);
+		return ConsoleIO.promptForMenuSelection(users, false);
 	}
 
 	@Override
@@ -205,7 +208,7 @@ public class UserInteraction implements UserInteractionInterface {
 		for (int i = 0; i < patients.length; i++) {
 			patients[i] = matchedPatients.get(i).toString();
 		}
-		return ConsoleIO.promptForMenuSelection(patients, true);
+		return ConsoleIO.promptForMenuSelection(patients, false);
 	}
 
 	@Override
@@ -214,7 +217,7 @@ public class UserInteraction implements UserInteractionInterface {
 		for (int i = 0; i < providers.length; i++) {
 			providers[i] = matchedProviders.get(i).toString();
 		}
-		return ConsoleIO.promptForMenuSelection(providers, true);
+		return ConsoleIO.promptForMenuSelection(providers, false);
 	}
 
 	@Override
@@ -223,7 +226,7 @@ public class UserInteraction implements UserInteractionInterface {
 		for (int i = 0; i < appointments.length; i++) {
 			appointments[i] = matchedAppointments.get(i).toString();
 		}
-		return ConsoleIO.promptForMenuSelection(appointments, true);
+		return ConsoleIO.promptForMenuSelection(appointments, false);
 
 	}
 
@@ -313,50 +316,50 @@ public class UserInteraction implements UserInteractionInterface {
 	@Override
 	public int getDayOfMonth(int month) {
 		int day = 0;
-		
-		switch(month) {
-			case 1:	
-				day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 31);
-				break;
-			case 3:
-				day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 31);
-				break;
-			case 5:
-				day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 31);
-				break;
-			case 7:
-				day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 31);
-				break;
-			case 8:
-				day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 31);
-				break;
-			case 10:
-				day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 31);
-				break;
-			case 12:	
-				day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 31);
-				break;
-			case 2: 
-				day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 28);
-				break;
-			case 4:	
-				day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 30);
-				break;
-			case 6:
-				day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 30);
-				break;
-			case 9:
-				day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 30);
-				break;
-			case 11:
-				day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 30);
-				break;
-			default:
-				break;
+
+		switch (month) {
+		case 1:
+			day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 31);
+			break;
+		case 3:
+			day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 31);
+			break;
+		case 5:
+			day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 31);
+			break;
+		case 7:
+			day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 31);
+			break;
+		case 8:
+			day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 31);
+			break;
+		case 10:
+			day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 31);
+			break;
+		case 12:
+			day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 31);
+			break;
+		case 2:
+			day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 28);
+			break;
+		case 4:
+			day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 30);
+			break;
+		case 6:
+			day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 30);
+			break;
+		case 9:
+			day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 30);
+			break;
+		case 11:
+			day = ConsoleIO.promptForInt("What is the day of the appointment?", 1, 30);
+			break;
+		default:
+			break;
 		}
-		
+
 		return day;
-			}
+	}
 
 	@Override
 	public int getHour() {
@@ -406,5 +409,51 @@ public class UserInteraction implements UserInteractionInterface {
 	@Override
 	public boolean sortBySelection() {
 		return ConsoleIO.promptForBool("Do you want to sort them by largest to smallest or by name?", "l", "n");
+	}
+
+	@Override
+	public void printGroup(int i, int total, boolean groupBy) {
+		if (groupBy) {
+			String month = LocalDate.of(1, i, 1).getMonth().getDisplayName(TextStyle.FULL, Locale.getDefault());
+			ConsoleIO.displayMessage(month + "\nTotal Charges: " + total);
+		} else {
+			String day = LocalDate.of(1, 1, i).getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault());
+			ConsoleIO.displayMessage(day + "\nTotal Charges: " + total);
+		}
+	}
+
+	@Override
+	public String getSearchProcedureCode() {
+		return ConsoleIO.promptForInput("Please enter the procedure code. D:", true);
+	}
+
+	@Override
+	public void notifyNoPatient() {
+		ConsoleIO.displayMessage("You must select a patient to add to an appointment.");
+	}
+
+	@Override
+	public void notifyNoProvider() {
+		ConsoleIO.displayMessage("You must select a provider to add to an appointment.");
+	}
+
+	@Override
+	public boolean searchForPatient() {
+		return ConsoleIO.promptForBool("Do you want to search for a specific patient? (y, n)", "y", "n");
+	}
+
+	@Override
+	public boolean searchForProvider() {
+		return ConsoleIO.promptForBool("Do you want to search for a specific provider? (y, n)", "y", "n");
+	}
+
+	@Override
+	public void askForPatient() {
+		ConsoleIO.displayMessage("Search for the patient you want to charge.");
+	}
+
+	@Override
+	public void recordPaymentFailed() {
+		ConsoleIO.displayMessage("Payment record failed, no patient to record the payment for.");
 	}
 }
