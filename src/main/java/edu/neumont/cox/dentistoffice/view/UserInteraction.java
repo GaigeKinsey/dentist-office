@@ -417,7 +417,7 @@ public class UserInteraction implements UserInteractionInterface {
 			String month = LocalDate.of(1, i, 1).getMonth().getDisplayName(TextStyle.FULL, Locale.getDefault());
 			ConsoleIO.displayMessage(month + "\nTotal Charges: " + total);
 		} else {
-			String day = LocalDate.of(1, 1, i).getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault());
+			int day = LocalDate.of(1, 1, i).getDayOfMonth();
 			ConsoleIO.displayMessage(day + "\nTotal Charges: " + total);
 		}
 	}
@@ -429,12 +429,12 @@ public class UserInteraction implements UserInteractionInterface {
 
 	@Override
 	public void notifyNoPatient() {
-		ConsoleIO.displayMessage("You must select a patient to add to an appointment.");
+		ConsoleIO.displayMessage("Your search did not match any patients, please retry.");
 	}
 
 	@Override
 	public void notifyNoProvider() {
-		ConsoleIO.displayMessage("You must select a provider to add to an appointment.");
+		ConsoleIO.displayMessage("Your search did not match any providers, please retry.");
 	}
 
 	@Override
@@ -462,5 +462,10 @@ public class UserInteraction implements UserInteractionInterface {
 		for (Patient patient : patients) {
 			ConsoleIO.displayMessage(patient.getPatientWithBalance());
 		}
+	}
+
+	@Override
+	public void notifyMatchingId() {
+		ConsoleIO.displayMessage("Unique id is not unique.");
 	}
 }
