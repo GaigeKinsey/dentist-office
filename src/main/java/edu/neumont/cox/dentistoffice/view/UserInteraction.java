@@ -412,7 +412,7 @@ public class UserInteraction implements UserInteractionInterface {
 	}
 
 	@Override
-	public void printGroup(int i, int total, boolean groupBy) {
+	public void printGroup(int i, double total, boolean groupBy) {
 		if (groupBy) {
 			String month = LocalDate.of(1, i, 1).getMonth().getDisplayName(TextStyle.FULL, Locale.getDefault());
 			ConsoleIO.displayMessage(month + "\nTotal Charges: " + total);
